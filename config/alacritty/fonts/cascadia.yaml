@@ -1,0 +1,18 @@
+font:
+  normal:
+    family: CascadiaCodePL
+    style: Regular
+
+  bold:
+    family: CascadiaCodePL
+    style: SemiBold
+
+  italic:
+    family: CascadiaCodePL
+    style: SemiBoldItalic
+
+  bold_italic:
+    family: CascadiaCodePL
+    style: SemiBoldItalic
+
+  size: 10

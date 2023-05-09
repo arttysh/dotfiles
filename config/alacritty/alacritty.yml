@@ -1,0 +1,14 @@
+import:
+  - ~/.config/alacritty/themes/themes/monokai_pro.yaml
+
+  # fonts
+  - ~/.config/alacritty/fonts/cascadia.yaml
+  # - ~/.config/alacritty/fonts/sourcecodepro.yaml
+  # - ~/.config/alacritty/fonts/inputmono.yaml
+  # - ~/.config/alacritty/fonts/b612.yaml
+  # - ~/.config/alacritty/fonts/fantasquesansmono.yaml
+  # - ~/.config/alacritty/fonts/firacode.yaml
+  # - ~/.config/alacritty/fonts/dejavusansmono.yaml
+
+window:
+  opacity: 1

@@ -1,0 +1,10 @@
+font:
+  normal:
+    family: FiraCode
+    style: SemiBold
+
+  bold:
+    family: FiraCode
+    style: SemiBold
+
+  size: 10

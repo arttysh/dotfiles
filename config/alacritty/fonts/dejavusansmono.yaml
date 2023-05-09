@@ -1,0 +1,18 @@
+font:
+  normal:
+    family: DejaVuSansMono
+    style: Regular
+
+  bold:
+    family: DejaVuSansMono
+    style: Bold 
+
+  italic:
+    family: DejaVuSansMono
+    style: Oblique
+
+  bold_italic:
+    family: DejaVuSansMono
+    style: BoldOblique
+
+  size: 10

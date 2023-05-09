@@ -1,0 +1,18 @@
+font:
+  normal:
+    family: InputMono
+    style: Regular
+
+  bold:
+    family: InputMono
+    style: Bold
+
+  italic:
+    family: InputMono
+    style: MediumItalic
+
+  bold_italic:
+    family: InputMono
+    style: BoldItalic
+
+  size: 9
