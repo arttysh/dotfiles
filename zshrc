@@ -77,6 +77,7 @@ plugins=(
 	tmux
 	docker
 	zsh-autosuggestions
+    python
 )
 
 source $ZSH/oh-my-zsh.sh
