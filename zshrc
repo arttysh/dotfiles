@@ -78,6 +78,7 @@ plugins=(
 	docker
 	zsh-autosuggestions
     python
+    docker-compose
 )
 
 source $ZSH/oh-my-zsh.sh
