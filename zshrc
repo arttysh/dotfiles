@@ -114,8 +114,8 @@ alias zedit="nvim ~/.zshrc"
 
 alias vim="nvim"
 
-alias srcenv="source env/bin/activate"
-alias srcenvb="source ../env/bin/activate"
+alias s="source env/bin/activate"
+alias sb="source ../env/bin/activate"
 
 alias ipy="python -m IPython"
 
