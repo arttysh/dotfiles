@@ -139,5 +139,7 @@ export FZF_CTRL_R_OPTS="
 # Print tree structure in the preview window
 export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
 
+export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
+
 # fzf + vim
 bindkey -s '^v' 'nvim $(fzf)\n'
