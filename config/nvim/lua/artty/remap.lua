@@ -30,6 +30,9 @@ vim.keymap.set({"n", "i"}, "<C-k>", "<C-w><C-k>")
 vim.keymap.set({"n", "i"}, "<C-h>", "<C-w><C-h>")
 vim.keymap.set({"n", "i"}, "<C-l>", "<C-w><C-l>")
 
+vim.keymap.set("n", "gj", ":tabprevious<CR>")
+vim.keymap.set("n", "gk", ":tabnext<CR>")
+
 
 -- TODO: 
 -- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
