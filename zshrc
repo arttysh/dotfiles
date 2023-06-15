@@ -1,6 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.local/bin:$PATH
 
+zstyle ':omz:update' mode disabled
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -112,6 +114,7 @@ source $ZSH/oh-my-zsh.sh
 alias zsrc="source ~/.zshrc"
 alias zedit="nvim ~/.zshrc"
 
+alias v="nvim"
 alias vim="nvim"
 
 alias s="source env/bin/activate"
@@ -132,9 +135,7 @@ export FZF_CTRL_T_OPTS="
 export FZF_CTRL_R_OPTS="
   --preview 'echo {}' --preview-window up:3:hidden:wrap
   --bind 'ctrl-/:toggle-preview'
-  --bind 'ctrl-y:execute-silent(echo -n {2..} | xsel --clipboard --input)+abort'
-  --color header:italic
-  --header 'Press CTRL-Y to copy command into clipboard'"
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | xsel --clipboard --input)+abort'"
 
 # Print tree structure in the preview window
 export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
