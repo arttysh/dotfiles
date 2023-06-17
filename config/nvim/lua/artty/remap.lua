@@ -36,12 +36,14 @@ vim.keymap.set("n", "gk", ":tabnext<CR>")
 -- Aerial (Tags)
 vim.keymap.set('n', '<leader>m', ':AerialToggle<CR>')
 
--- TODO: 
--- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+-- tmux-sessionizer
+vim.keymap.set("n", "<C-m>", ":silent !tmux neww tms<CR>")
+
+-- TODO:
 -- vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
---
+
 -- quickfix movements
--- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
--- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
--- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
--- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+--vim.keymap.set("n", "<C-n>", ":cnext<CR>zz")
+--vim.keymap.set("n", "<C-p>", ":cprev<CR>zz")
+--vim.keymap.set("n", "<leader>n", ":lnext<CR>zz")
+--vim.keymap.set("n", "<leader>p", ":lprev<CR>zz")

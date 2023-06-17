@@ -110,17 +110,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+source ~/.zshenv
 
-alias zsrc="source ~/.zshrc"
-alias zedit="nvim ~/.zshrc"
-
-alias v="nvim"
-alias vim="nvim"
-
-alias s="source env/bin/activate"
-alias sb="source ../env/bin/activate"
-
-alias ipy="python -m IPython"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -144,3 +135,6 @@ export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
 
 # fzf + vim
 bindkey -s '^v' 'nvim $(fzf)\n'
+
+# tmux-sessionizer
+bindkey -s '^o' '~/.tmux-sessionizer\n'
