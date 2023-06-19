@@ -1,5 +1,7 @@
 vim.g.mapleader = ","
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>x", vim.cmd.Ex)
+
+vim.keymap.set("n", "<leader>q", ":q<CR>")
 
 -- Move code block
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -21,9 +23,6 @@ vim.keymap.set("n", "Q", "<nop>")
 -- Quick replace -- GOD LEVEL
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
--- chmod +x <file>
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
-
 -- easy navigations
 vim.keymap.set({"n", "i"}, "<C-j>", "<C-w><C-j>")
 vim.keymap.set({"n", "i"}, "<C-k>", "<C-w><C-k>")
@@ -38,6 +37,10 @@ vim.keymap.set('n', '<leader>m', ':AerialToggle<CR>')
 
 -- tmux-sessionizer
 vim.keymap.set("n", "<C-m>", ":silent !tmux neww tms<CR>")
+
+-- vim fugitive
+vim.keymap.set("n", "gl", ":Git log<CR>")
+
 
 -- TODO:
 -- vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
