@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.local/bin:/usr/local/go/bin:$PATH
 
 zstyle ':omz:update' mode disabled
 
@@ -78,9 +78,10 @@ plugins=(
 	git
 	tmux
 	docker
+  golang
 	zsh-autosuggestions
-    python
-    docker-compose
+  python
+  docker-compose
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -110,7 +111,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source ~/.zshenv
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -138,3 +138,5 @@ bindkey -s '^v' 'nvim $(fzf)\n'
 
 # tmux-sessionizer
 bindkey -s '^o' '~/.tmux-sessionizer\n'
+
+source ~/.zshenv

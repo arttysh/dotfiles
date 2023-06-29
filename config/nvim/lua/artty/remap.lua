@@ -36,7 +36,7 @@ vim.keymap.set("n", "gk", ":tabnext<CR>")
 vim.keymap.set('n', '<leader>m', ':AerialToggle<CR>')
 
 -- tmux-sessionizer
-vim.keymap.set("n", "<C-m>", ":silent !tmux neww tms<CR>")
+vim.keymap.set("n", "<C-p>", ":silent !tmux neww tms<CR>")
 
 -- vim fugitive
 vim.keymap.set("n", "gl", ":Git log<CR>")

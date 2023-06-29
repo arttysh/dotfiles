@@ -17,3 +17,4 @@ alias nu="nmcli connection up nz.protonvpn.net.udp"
 alias nd="nmcli connection down nz.protonvpn.net.udp"
 
 alias tms="~/.tmux-sessionizer"
+alias archwiki='firefox-developer-edition /usr/share/doc/arch-wiki/html/en/$(ls /usr/share/doc/arch-wiki/html/en/|fzf)'
