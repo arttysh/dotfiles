@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/.local/bin:/usr/local/go/bin:$PATH
+export PATH=$HOME/go/bin:$HOME/.local/bin:/usr/local/go/bin:$PATH
 
 zstyle ':omz:update' mode disabled
 
