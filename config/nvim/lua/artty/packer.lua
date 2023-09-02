@@ -46,6 +46,15 @@ return require('packer').startup(function(use)
             ts_update()
         end,
     }
+    use {
+        "tpope/vim-dadbod",
+        opt = true,
+        requires = {
+            "kristijanhusak/vim-dadbod-ui",
+            "kristijanhusak/vim-dadbod-completion",
+        },
+        cmd = { "DBUIToggle", "DBUI", "DBUIAddConnection", "DBUIFindBuffer", "DBUIRenameBuffer", "DBUILastQueryInfo" },
+    }
 
     use('ThePrimeagen/harpoon')
     use('mbbill/undotree')

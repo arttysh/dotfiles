@@ -29,11 +29,11 @@ vim.opt.foldlevel = 12
 
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = { "*" },
-  callback = function()
-    local curr_cursor_pos = vim.fn.getpos(".")
-    vim.cmd([[%s/\s\+$//e]])
-    vim.fn.setpos(".", curr_cursor_pos)
-  end,
+    pattern = { "*" },
+    callback = function()
+        local curr_cursor_pos = vim.fn.getpos(".")
+        vim.cmd([[%s/\s\+$//e]])
+        vim.fn.setpos(".", curr_cursor_pos)
+    end,
 
 })
