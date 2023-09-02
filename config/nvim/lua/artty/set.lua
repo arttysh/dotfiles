@@ -27,6 +27,8 @@ vim.opt.colorcolumn = "80"
 vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 12
 
+vim.g.NERDSpaceDelims = 1
+
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     pattern = { "*" },
