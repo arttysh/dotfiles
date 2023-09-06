@@ -20,3 +20,6 @@ alias tms="~/.tmux-sessionizer"
 alias archwiki='firefox-developer-edition /usr/share/doc/arch-wiki/html/en/$(ls /usr/share/doc/arch-wiki/html/en/|fzf)'
 
 alias t="tree"
+
+# find process name from pid
+alias psfind="ps -o comm= -p"
