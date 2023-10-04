@@ -82,6 +82,8 @@ return require('packer').startup(function(use)
         }
     }
 
+    use('hrsh7th/cmp-nvim-lsp-signature-help')
+
     use('m4xshen/autoclose.nvim')
 
     use('preservim/nerdcommenter')
