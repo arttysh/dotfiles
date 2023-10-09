@@ -78,10 +78,10 @@ plugins=(
 	git
 	tmux
 	docker
-  golang
-	zsh-autosuggestions
-  python
-  docker-compose
+    golang
+    zsh-autosuggestions
+    python
+    docker-compose
 )
 
 source $ZSH/oh-my-zsh.sh
