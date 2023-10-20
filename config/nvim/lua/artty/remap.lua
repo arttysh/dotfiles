@@ -2,6 +2,7 @@ vim.g.mapleader = ","
 vim.keymap.set("n", "<leader>x", vim.cmd.Ex)
 
 vim.keymap.set("n", "<leader>q", ":q<CR>")
+vim.keymap.set("n", "<leader>c", ":cclose<CR>")
 
 -- Move code block
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
