@@ -28,6 +28,7 @@ vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 12
 
 vim.g.NERDSpaceDelims = 1
+vim.g.NERDDefaultAlign = 'start'
 
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
