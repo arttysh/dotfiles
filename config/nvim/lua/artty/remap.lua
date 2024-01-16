@@ -32,6 +32,8 @@ vim.keymap.set({ "n", "i" }, "<C-l>", "<C-w><C-l>")
 
 vim.keymap.set("n", "gj", ":tabprevious<CR>")
 vim.keymap.set("n", "gk", ":tabnext<CR>")
+vim.keymap.set("n", "gJ", ":-tabmove<CR>")
+vim.keymap.set("n", "gK", ":+tabmove<CR>")
 
 -- Aerial (Tags)
 vim.keymap.set('n', '<leader>m', ':AerialToggle<CR>')
