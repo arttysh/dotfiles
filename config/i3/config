@@ -132,6 +132,7 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
@@ -144,6 +145,30 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+
+#
+# start: assign workspace to monitor
+set $monitor_left "DP-0"
+set $monitor_right "HDMI-0"
+
+# browser primary
+workspace $ws1 output $monitor_left
+# browser secondary
+workspace $ws3 output $monitor_left
+
+# dev primary
+workspace $ws2 output $monitor_right
+# dev secondary
+workspace $ws4 output $monitor_right
+
+# communication
+workspace $ws5 output $monitor_right
+
+# entertainment
+workspace $ws6 output $monitor_right
+#
+# end: assign workspace to monitor
+
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -226,13 +251,14 @@ bindsym Print exec gnome-screenshot -i
 bindsym $mod+Print exec gnome-screenshot -a
 
 
-default_border pixel 2
+default_border pixel 4
 default_floating_border pixel 4
 # smart_borders on
-# client.focused #555555 #555555 #ffffff #2e9ef4     #CC0000
 client.focused #555555 #555555 #ffffff #CC0000     #CC0000
 
 
 bindsym $mod+p exec --no-startup-id ~/.screenlayout.sh
 
-exec --no-startup-id feh --bg-scale /home/amit/Pictures/background/rocklee.png
+exec --no-startup-id feh --bg-center /home/artty/Pictures/background/window.jpeg
+
+# for_window [class="firefoxdeveloperedition"] floating enable
