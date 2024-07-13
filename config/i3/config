@@ -148,8 +148,10 @@ set $ws10 "10"
 
 #
 # start: assign workspace to monitor
-set $monitor_left "DP-0"
-set $monitor_right "HDMI-0"
+# set $monitor_left "DP-0"
+set $monitor_left "HDMI-0"
+# set $monitor_right "HDMI-0"
+set $monitor_right "DP-0"
 
 # browser primary
 workspace $ws1 output $monitor_left
@@ -259,6 +261,7 @@ client.focused #555555 #555555 #ffffff #CC0000     #CC0000
 
 bindsym $mod+p exec --no-startup-id ~/.screenlayout.sh
 
-exec --no-startup-id feh --bg-center /home/artty/Pictures/background/window.jpeg
+exec --no-startup-id feh --bg-fill /home/artty/Pictures/background/waterfall_blackwhite.jpg  /home/artty/Pictures/background/city2_blackwhite.jpg
+
 
 # for_window [class="firefoxdeveloperedition"] floating enable

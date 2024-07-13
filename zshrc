@@ -56,7 +56,7 @@ ZSH_THEME="fox"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -75,6 +75,7 @@ ZSH_THEME="fox"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+    aws
 	git
 	tmux
 	docker
@@ -82,6 +83,10 @@ plugins=(
     zsh-autosuggestions
     python
     docker-compose
+    zig-shell-completions
+    kubectl
+    kubeadm
+    systemd
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -112,6 +117,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export FZF_DEFAULT_COMMAND='fd -E node_modules'
+export FZF_CTRL_T_COMMAND='fd -E node_modules'
+export FZF_ALT_C_COMMAND='fd --type d -E node_modules'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -129,7 +137,10 @@ export FZF_CTRL_R_OPTS="
   --bind 'ctrl-y:execute-silent(echo -n {2..} | xsel --clipboard --input)+abort'"
 
 # Print tree structure in the preview window
-export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
+export FZF_ALT_C_OPTS="
+  --preview 'tree -C {}'
+  --height 100%
+  --bind 'ctrl-/:change-preview-window(down|)'"
 
 export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
 

@@ -12,6 +12,13 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
+    use {
+        'folke/todo-comments.nvim',
+        -- or                            , branch = '0.1.x',
+        requires = { { 'nvim-lua/plenary.nvim' } }
+    }
+
+
     --[[
      [use({
 	 [    'rose-pine/neovim',
@@ -24,18 +31,49 @@ return require('packer').startup(function(use)
 
 
     --[[
-       [use {
-       [    "ellisonleao/gruvbox.nvim",
-       [    as = "gruvbox",
-       [    config = function()
-       [        vim.cmd('colorscheme gruvbox')
-       [    end
-       [}
+       [ use {
+       [     "ellisonleao/gruvbox.nvim",
+       [     as = "gruvbox",
+       [     config = function()
+       [         vim.cmd('colorscheme gruvbox')
+       [     end
+       [ }
+       ]]
+    --[[
+       [ use {
+       [     "loctvl842/monokai-pro.nvim",
+       [     config = function()
+       [         require("monokai-pro").load()
+       [     end
+       [ }
+       ]]
+
+    --[[
+       [ use {
+       [     "fabius/molokai.nvim",
+       [     requires = {
+       [         "rktjmp/lush.nvim"
+       [     },
+       [     config = function()
+       [         vim.cmd('colorscheme molokai')
+       [     end
+       [ }
+       ]]
+
+    --[[
+       [ use {
+       [     "cpea2506/one_monokai.nvim",
+       [     as = "one_monokai",
+       [     config = function()
+       [         vim.cmd('colorscheme one_monokai')
+       [     end
+       [ }
        ]]
     use {
         "catppuccin/nvim",
         as = "catppuccin",
         config = function()
+            -- colorscheme catppuccin " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
             vim.cmd('colorscheme catppuccin-mocha')
         end
     }
@@ -92,4 +130,19 @@ return require('packer').startup(function(use)
         'stevearc/aerial.nvim',
         config = function() require('aerial').setup() end
     }
+
+    use("lukas-reineke/indent-blankline.nvim")
+
+    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = {
+            "markdown" } end, ft = { "markdown" }, })
+
+    use("sebdah/vim-delve")
+
+    use({
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        -- install jsregexp (optional!:).
+        run = "make install_jsregexp"
+    })
 end)

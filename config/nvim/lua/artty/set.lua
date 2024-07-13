@@ -40,3 +40,5 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     end,
 
 })
+
+vim.g.db_ui_save_location = "~/.dbui"
