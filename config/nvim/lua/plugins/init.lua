@@ -200,13 +200,33 @@ return {
     {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.8',
-        dependencies = { 'nvim-lua/plenary.nvim' }
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        config = function()
+            local t = require("telescope")
+            local builtin = require("telescope.builtin")
+
+            vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+            vim.keymap.set('n', '<leader>fs', builtin.live_grep, {})
+            vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+            vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+            t.load_extension('fzf')
+
+            t.setup {
+                defaults = require('telescope.themes').get_ivy(),
+            }
+
+        end
     },
 
     {
         "preservim/nerdcommenter",
-        config = function ()
+        dependencies = { 'nvim-telescope/telescope-fzf-native.nvim' },
+        config = function()
             vim.g.NERDSpaceDelims = 1
         end
-    }
+    },
+
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+
+    { 'tpope/vim-fugitive' }
 }
