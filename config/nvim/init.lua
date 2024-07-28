@@ -1,1 +1,2 @@
-require("artty")
+require("config.lazy")
+require("config.remap")
