@@ -207,7 +207,7 @@ mode "exit: [l]ogout, [r]eboot, [s]uspend, [p]oweroff" {
   bindsym l exec i3-msg exit
   bindsym r exec systemctl reboot
   bindsym p exec poweroff
-  bindsym s exec systemctl suspend
+  bindsym s exec systemctl suspend; mode "default"
   bindsym Escape mode "default"
   bindsym Return mode "default"
 }
