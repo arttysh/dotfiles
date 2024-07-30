@@ -1,5 +1,8 @@
 return {
-    { "catppuccin/nvim",  name = "catppuccin", priority = 1000,
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
         config = function()
             vim.cmd.colorscheme "catppuccin-mocha"
         end
@@ -83,13 +86,13 @@ return {
 
             }
 
-            local servers = {'pyright', 'tsserver', 'sqls', 'tailwindcss'}
+            local servers = { 'pyright', 'tsserver', 'sqls', 'tailwindcss' }
             for _, lsp in ipairs(servers) do
-                lspconfig[lsp].setup{
+                lspconfig[lsp].setup {
                     capabilities = capabilities,
-                init_options = {
-                    usePlaceholders = true,
-                }
+                    init_options = {
+                        usePlaceholders = true,
+                    }
                 }
             end
 
@@ -101,7 +104,7 @@ return {
         end,
     },
 
-    { "Bilal2453/luvit-meta", lazy = true },
+    { "Bilal2453/luvit-meta",                     lazy = true },
     {
         "folke/lazydev.nvim",
         ft = "lua", -- only load on lua files
@@ -119,7 +122,7 @@ return {
             local configs = require("nvim-treesitter.configs")
 
             configs.setup({
-                ensure_installed = {"go"},
+                ensure_installed = { "go" },
                 sync_install = false,
                 highlight = { enable = true },
                 indent = { enable = true },
@@ -186,7 +189,6 @@ return {
                 })
 
             })
-
         end
     },
 
@@ -214,7 +216,6 @@ return {
             t.setup {
                 defaults = require('telescope.themes').get_ivy(),
             }
-
         end
     },
 
@@ -237,5 +238,16 @@ return {
             "nvim-telescope/telescope.nvim"
         },
         opts = {},
-    }
+    },
+
+    {
+        "ellisonleao/glow.nvim",
+        cmd = "Glow",
+        config = function()
+            require('glow').setup({
+                width_ratio = 1,
+                height_ratio = 1,
+            })
+        end
+    },
 }
