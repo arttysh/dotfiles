@@ -51,3 +51,6 @@ vim.keymap.set("n", "<C-S-Right>", ":vertical resize +10<CR>")
 
 -- diagnostics
 vim.keymap.set("n", "<leader>d", ":lua vim.diagnostic.setqflist()<cr>")
+
+
+vim.keymap.set("n", "<leader>ft", ":TodoTelescope keywords=TODO,FIX<cr>")
