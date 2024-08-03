@@ -27,7 +27,7 @@ return {
         "neovim/nvim-lspconfig",
 
         dependencies = {
-            "williamboman/mason.nvim"
+            "williamboman/mason.nvim",
         },
 
         config = function()
@@ -86,7 +86,7 @@ return {
 
             }
 
-            local servers = { 'pyright', 'tsserver', 'sqls', 'tailwindcss' }
+            local servers = { 'sqls', 'pyright', 'tsserver', 'tailwindcss' }
             for _, lsp in ipairs(servers) do
                 lspconfig[lsp].setup {
                     capabilities = capabilities,
@@ -95,12 +95,6 @@ return {
                     }
                 }
             end
-
-            lspconfig.sqls.setup {
-                on_attach = function(client, bufnr)
-                    require('sqls').on_attach(client, bufnr)
-                end
-            }
         end,
     },
 
@@ -181,13 +175,24 @@ return {
                     ["<CR>"] = cmp.mapping.confirm({ select = true }),
                 }),
 
-                sources = cmp.config.sources({
-                    { name = "nvim_lsp" },
-                    { name = "luasnip" },
-                }, {
-                    { name = "buffer" },
-                })
+                sources = cmp.config.sources(
+                    {
+                        { name = "nvim_lsp" },
+                        { name = "luasnip" },
+                    },
+                    {
+                        { name = "buffer" },
+                    }
+                )
 
+            })
+
+            cmp.setup.filetype({ 'sql' }, {
+                sources = {
+                    { name = "nvim_lsp",             priority = 1000 },
+                    { name = "vim-dadbod-completion" },
+                    { name = "buffer" }
+                }
             })
         end
     },
@@ -249,5 +254,23 @@ return {
                 height_ratio = 1,
             })
         end
+    },
+
+    {
+        'kristijanhusak/vim-dadbod-ui',
+        dependencies = {
+            { 'tpope/vim-dadbod',                     lazy = true },
+            { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql', '' }, lazy = true },
+        },
+        cmd = {
+            'DBUI',
+            'DBUIToggle',
+            'DBUIAddConnection',
+            'DBUIFindBuffer',
+        },
+        init = function()
+            -- Your DBUI configuration
+            vim.g.db_ui_use_nerd_fonts = 1
+        end,
     },
 }

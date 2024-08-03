@@ -57,6 +57,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 
 -- auto format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = { "*.go", "*.py", "*.lua" },
     callback = function()
         vim.lsp.buf.format()
     end
