@@ -217,10 +217,23 @@ return {
             vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
             vim.keymap.set('n', '<leader>fr', builtin.lsp_references, {})
             vim.keymap.set('n', '<leader>fi', builtin.lsp_implementations, {})
+            vim.keymap.set(
+                'n', '<leader>fd',
+                function()
+                    builtin.diagnostics({ bufnr = 0, no_sign = true })
+                end,
+                {}
+            )
             t.load_extension('fzf')
 
             t.setup {
                 defaults = require('telescope.themes').get_ivy(),
+                pickers = {
+                    diagnostics = {
+                        theme         = "dropdown",
+                        layout_config = { width = 0.95 },
+                    },
+                }
             }
         end
     },
