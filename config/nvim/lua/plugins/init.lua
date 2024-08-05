@@ -41,7 +41,6 @@ return {
             vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
             vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, opts)
 
 
@@ -200,7 +199,7 @@ return {
     {
         "liuchengxu/vista.vim",
         config = function()
-            vim.keymap.set("n", "<leader>m", ":Vista!!<cr>")
+            vim.keymap.set("n", "<leader>m", ":Vista!!<cr>", { silent = true })
         end,
     },
 
@@ -216,6 +215,8 @@ return {
             vim.keymap.set('n', '<leader>fs', builtin.live_grep, {})
             vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
             vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+            vim.keymap.set('n', '<leader>fr', builtin.lsp_references, {})
+            vim.keymap.set('n', '<leader>fi', builtin.lsp_implementations, {})
             t.load_extension('fzf')
 
             t.setup {
@@ -269,7 +270,6 @@ return {
             'DBUIFindBuffer',
         },
         init = function()
-            -- Your DBUI configuration
             vim.g.db_ui_use_nerd_fonts = 1
         end,
     },
