@@ -1,6 +1,18 @@
 vim.keymap.set('n', '<leader>q', ':q<cr>')
 vim.keymap.set('n', '<leader>x', ':Ex<cr>')
 
+-- quick navigate between previous and current file
+local swap = true
+vim.keymap.set('n', '<leader><leader>', function()
+    if swap then
+        vim.cmd(':bp')
+        swap = false
+    else
+        vim.cmd(':bn')
+        swap = true
+    end
+end)
+
 
 -- easy split navigation
 vim.keymap.set('n', '<C-j>', '<C-W><C-j>')
@@ -28,7 +40,7 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 -- copy to clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])  -- entire line
+vim.keymap.set("n", "<leader>Y", [["+Y]]) -- entire line
 
 
 -- Quick replace
