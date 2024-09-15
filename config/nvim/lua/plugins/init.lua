@@ -85,7 +85,10 @@ return {
 
             }
 
-            local servers = { 'sqls', 'pyright', 'tsserver', 'tailwindcss' }
+            local servers = {
+                'sqls', 'pyright', 'ts_ls', 'tailwindcss', 'clangd', 'emmet_language_server', 'emmet_ls',
+                'htmx', 'html'
+            }
             for _, lsp in ipairs(servers) do
                 lspconfig[lsp].setup {
                     capabilities = capabilities,
@@ -223,6 +226,9 @@ return {
             vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
             vim.keymap.set('n', '<leader>fr', builtin.lsp_references, {})
             vim.keymap.set('n', '<leader>fi', builtin.lsp_implementations, {})
+
+            vim.keymap.set('n', '<leader>fm', builtin.marks, {})
+
             vim.keymap.set(
                 'n', '<leader>fd',
                 function()
@@ -269,17 +275,6 @@ return {
     },
 
     {
-        "ellisonleao/glow.nvim",
-        cmd = "Glow",
-        config = function()
-            require('glow').setup({
-                width_ratio = 1,
-                height_ratio = 1,
-            })
-        end
-    },
-
-    {
         'kristijanhusak/vim-dadbod-ui',
         dependencies = {
             { 'tpope/vim-dadbod',                     lazy = true },
@@ -295,4 +290,6 @@ return {
             vim.g.db_ui_use_nerd_fonts = 1
         end,
     },
+
+    { 'isobit/vim-caddyfile' }
 }

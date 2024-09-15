@@ -1,9 +1,9 @@
 vim.keymap.set('n', '<leader>q', ':q<cr>')
 vim.keymap.set('n', '<leader>x', ':Ex<cr>')
 
--- quick navigate between previous and current file
+-- Buffer navigate
 local swap = true
-vim.keymap.set('n', '<leader><leader>', function()
+vim.keymap.set('n', '<leader><leader>', function() -- quick nav between prev and curr buffer
     if swap then
         vim.cmd(':bp')
         swap = false
@@ -12,6 +12,9 @@ vim.keymap.set('n', '<leader><leader>', function()
         swap = true
     end
 end)
+-- cycle between buffers
+vim.keymap.set('n', '<C-N>', ':bn<cr>')
+vim.keymap.set('n', '<C-P>', ':bp<cr>')
 
 
 -- easy split navigation
@@ -62,7 +65,9 @@ vim.keymap.set("n", "<C-S-Right>", ":vertical resize +10<CR>")
 
 
 -- diagnostics
-vim.keymap.set("n", "<leader>d", ":lua vim.diagnostic.setqflist()<cr>")
+vim.keymap.set("n", "<leader>dd", ":lua vim.diagnostic.setqflist()<cr>")
+vim.keymap.set("n", "<leader>dr", ":lua vim.lsp.buf.references()<cr>")
+vim.keymap.set("n", "<leader>da", ":lua vim.lsp.buf.code_action()<cr>")
 
 
 vim.keymap.set("n", "<leader>ft", ":TodoTelescope keywords=TODO,FIX<cr>")

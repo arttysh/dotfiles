@@ -58,9 +58,18 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 
 -- auto format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = { "*.go", "*.py", "*.lua" },
+    pattern = { "*.go", "*.lua", "*.js" },
     callback = function()
         vim.lsp.buf.format()
+    end
+})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = { "*.py" },
+    callback = function()
+        local v = vim.fn.winsaveview()
+        vim.cmd("%!black - -q")
+        vim.fn.winrestview(v)
     end
 })
 
