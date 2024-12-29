@@ -1,12 +1,23 @@
 return {
     {
-        "catppuccin/nvim",
-        name = "catppuccin",
+        "fabius/molokai.nvim",
+        dependencies = "rktjmp/lush.nvim",
+        lazy = false,
         priority = 1000,
         config = function()
-            vim.cmd.colorscheme "catppuccin-mocha"
+            vim.cmd.colorscheme "molokai"
         end
     },
+    --[[
+       [ {
+       [     "catppuccin/nvim",
+       [     name = "catppuccin",
+       [     priority = 1000,
+       [     config = function()
+       [         vim.cmd.colorscheme "catppuccin-mocha"
+       [     end
+       [ },
+       ]]
 
     {
         "mbbill/undotree",
@@ -85,18 +96,68 @@ return {
 
             }
 
+            local json_capabilities = vim.lsp.protocol.make_client_capabilities()
+            json_capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+            require 'lspconfig'.jsonls.setup {
+                capabilities = json_capabilities,
+            }
+
+            lspconfig.emmet_language_server.setup {
+                settings = {
+                    filetypes = { "js", "css", "eruby", "html", "htmldjango", "javascriptreact", "less", "pug", "sass", "scss", "typescriptreact", "htmlangular" }
+                }
+            }
+
+            lspconfig.ts_ls.setup {
+                capabilities = json_capabilities,
+                settings = {
+                    ts_ls = {
+                        includeInlayParameterNameHints = 'all'
+                    }
+                },
+                init_options = {
+                    usePlaceholders = true,
+                }
+            }
+
             local servers = {
-                'sqls', 'pyright', 'ts_ls', 'tailwindcss', 'clangd', 'emmet_language_server', 'emmet_ls',
-                'htmx', 'html'
+                'sqls', 'pyright', 'tailwindcss', 'clangd', 'emmet_ls',
+                'htmx', 'html', 'bashls'
             }
             for _, lsp in ipairs(servers) do
                 lspconfig[lsp].setup {
-                    capabilities = capabilities,
+                    capabilities = json_capabilities,
                     init_options = {
                         usePlaceholders = true,
                     }
                 }
             end
+
+            local configs = require 'lspconfig.configs'
+
+            if not configs.cfn_lint then
+                configs.cfn_lint = {
+                    default_config = {
+                        cmd = { 'cfn-lint' },
+                        filetypes = { 'yaml', 'yml' },
+                        version = '1.18.3',
+                        root_dir = lspconfig.util.root_pattern("*.yaml", "*.yml"),
+                        settings = {
+                            cfn_lint = {
+                                enabled = true,
+                                --[[
+                                   [ linting = {
+                                   [     -- Add specific linting configurations if needed
+                                   [ }
+                                   ]]
+                            }
+                        },
+                    },
+                }
+            end
+
+            lspconfig.cfn_lint.setup {}
         end,
     },
 
@@ -291,5 +352,22 @@ return {
         end,
     },
 
-    { 'isobit/vim-caddyfile' }
+    { 'isobit/vim-caddyfile' },
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        build = "cd app && npm install",
+        init = function()
+            vim.g.mkdp_filetypes = { "markdown" }
+        end,
+        ft = { "markdown" },
+    },
+
+    {
+        "brenoprata10/nvim-highlight-colors",
+        config = function()
+            require("nvim-highlight-colors").setup({})
+        end
+    },
+
 }

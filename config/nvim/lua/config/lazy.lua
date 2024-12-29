@@ -45,6 +45,8 @@ vim.opt.foldlevel      = 12
 vim.opt.incsearch      = true
 
 
+vim.lsp.log.set_level(vim.log.levels.OFF)
+
 -- Remove trailing spaces
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     pattern = { "*" },
@@ -58,7 +60,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 
 -- auto format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = { "*.go", "*.lua", "*.js" },
+    pattern = { "*.go", "*.lua", "*.js", "*.ts", "*.yaml", "*.json" },
     callback = function()
         vim.lsp.buf.format()
     end
@@ -73,6 +75,25 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end
 })
 
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = { "*.hcl" },
+    callback = function()
+        local v = vim.fn.winsaveview()
+        vim.cmd("%!hclfmt")
+        vim.fn.winrestview(v)
+    end
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "hcl",
+    callback = function()
+        vim.opt_local.tabstop = 2
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.softtabstop = 2
+        vim.opt_local.expandtab = true
+    end
+})
 
 
 -- Setup lazy.nvim

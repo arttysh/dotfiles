@@ -2,8 +2,7 @@ alias zsrc="source ~/.zshrc"
 alias zedit="nvim ~/.zshrc"
 alias zenv="nvim ~/.zshenv"
 
-alias v="nvim"
-alias vim="nvim"
+alias vi="nvim"
 
 alias s="source env/bin/activate"
 alias sb="source ../env/bin/activate"
@@ -29,6 +28,8 @@ alias h='tput cup $((LINES/2)) 0'
 alias 2sh="~/.screenlayout/2-monitor.sh"
 
 alias c="bat"
+
+alias makes="make -s"
 
 gdoc() {
     go doc -src -all $1 | less

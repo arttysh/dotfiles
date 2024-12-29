@@ -1,3 +1,44 @@
 Host github.com
- Hostname ssh.github.com
- Port 443
+    Hostname ssh.github.com
+    Port 443
+
+Host wg
+    Hostname 13.201.82.120
+    User admin
+    Port 2222
+    IdentityFile ~/.ssh/wg.pem
+
+Host blog
+    Hostname 152.89.107.115
+    User root
+    Port 2222
+    IdentityFile ~/.ssh/blog_netcup_ed25519
+
+Host blog-pika
+    Hostname 152.89.107.115
+    User pika
+    Port 2222
+    IdentityFile ~/.ssh/blog_netcup_pika
+
+Host ci
+    Hostname 37.27.44.86
+    # Hostname 2a01:4f9:c011:ada3::1
+    User root
+    Port 22
+    IdentityFIle ~/.ssh/hetzner
+
+Host heimdallr
+    Hostname 65.109.236.74
+    User root
+    IdentityFile ~/.ssh/hetzner
+
+Host artty-heimdallr
+    Hostname 65.109.236.74
+    User artty
+    IdentityFile ~/.ssh/heimdallr
+
+Host rushyway
+    Hostname 44.193.207.222
+    # Hostname [2600:1f18:50d1:c80c:c20:f030:7269:5396]
+    User admin
+    IdentityFile ~/.ssh/rushyway-afl.pem
