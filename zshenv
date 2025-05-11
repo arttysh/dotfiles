@@ -31,6 +31,8 @@ alias c="bat"
 
 alias makes="make -s"
 
+alias cat="bat"
+
 gdoc() {
     go doc -src -all $1 | less
 }
@@ -40,44 +42,4 @@ nvuvm_reset() {
     sudo modprobe -r nvidia_uvm
     sudo modprobe nvidia_uvm
     sudo systemctl start ollama.service
-}
-
-# TODO: This is wrong. No time for today: 18-05-2024
-proton_reinstall() {
-    cd /home/artty/aur_packages
-    if [ -d protonvpn-cli ]; then
-        echo "updating protonvpn-cli"
-        cd /home/artty/aur_packages
-        sudo pacman -Rns protonvpn-cli
-        rm protonvpn-cli -rf
-        git clone https://aur.archlinux.org/protonvpn-cli.git
-        cd protonvpn-cli
-        makepkg -s
-        sudo pacman -U *.zst
-    fi
-
-    cd /home/artty/aur_packages
-    if [ -d python-protonvpn-nm-lib ]; then
-        echo "updating python-protonvpn-nm-lib"
-        cd /home/artty/aur_packages
-        sudo pacman -Rns python-protonvpn-nm-lib
-        rm python-protonvpn-nm-lib -rf
-        git clone https://aur.archlinux.org/python-protonvpn-nm-lib.git
-        cd python-protonvpn-nm-lib
-        makepkg -s
-        sudo pacman -U *.zst
-    fi
-
-
-    cd /home/artty/aur_packages
-    if [ -d python-proton-client ]; then
-        echo "updating python-proton-client"
-        sudo pacman -Rns python-proton-client
-        rm python-proton-client -rf
-        git clone https://aur.archlinux.org/python-proton-client.git
-        cd python-proton-client
-        makepkg -s
-        sudo pacman -U *.zst
-    fi
-
 }

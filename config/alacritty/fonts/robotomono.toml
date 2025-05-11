@@ -1,0 +1,19 @@
+[font]
+size = 9
+
+# [font.bold]
+# family = "RobotoMono-SemiBold"
+# style = "Semibold"
+
+# [font.bold_italic]
+# family = "RobotoMono-MediumItalic"
+# style = "SemiboldIt"
+
+# [font.italic]
+# family = "RobotoMono-Italic"
+# style = "Italic"
+
+[font.normal]
+family = "RobotoMonoNerdFontMono"
+# style = "SemiBold"
+style = "semibold"
