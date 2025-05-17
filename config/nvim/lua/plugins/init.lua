@@ -5,19 +5,34 @@ return {
         lazy = false,
         priority = 1000,
         config = function()
-            vim.cmd.colorscheme "molokai"
         end
     },
-    --[[
-       [ {
-       [     "catppuccin/nvim",
-       [     name = "catppuccin",
-       [     priority = 1000,
-       [     config = function()
-       [         vim.cmd.colorscheme "catppuccin-mocha"
-       [     end
-       [ },
-       ]]
+
+    {
+        "rose-pine/neovim",
+        name = "rose-pine",
+        config = function()
+        end
+    },
+    {
+        'projekt0n/github-nvim-theme',
+        name = 'github-theme',
+        lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+        priority = 1000, -- make sure to load this before all the other start plugins
+        config = function()
+            require('github-theme').setup({
+                -- ...
+            })
+        end,
+    },
+
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
+        config = function()
+        end
+    },
 
     {
         "mbbill/undotree",
@@ -110,10 +125,10 @@ return {
             }
 
             lspconfig.ts_ls.setup {
-                capabilities = json_capabilities,
+                capabilities = capabilities,
                 settings = {
                     ts_ls = {
-                        includeInlayParameterNameHints = 'all'
+                        includeInlayParameterNameHints = 'all',
                     }
                 },
                 init_options = {
@@ -122,44 +137,26 @@ return {
             }
 
             local servers = {
-                'sqls', 'pyright', 'tailwindcss', 'clangd', 'emmet_ls',
-                'htmx', 'html', 'bashls'
+                'sqls', 'pyright', 'tailwindcss', 'clangd', 'bashls',
             }
             for _, lsp in ipairs(servers) do
                 lspconfig[lsp].setup {
-                    capabilities = json_capabilities,
+                    capabilities = capabilities,
                     init_options = {
                         usePlaceholders = true,
                     }
                 }
             end
-
-            local configs = require 'lspconfig.configs'
-
-            if not configs.cfn_lint then
-                configs.cfn_lint = {
-                    default_config = {
-                        cmd = { 'cfn-lint' },
-                        filetypes = { 'yaml', 'yml' },
-                        version = '1.18.3',
-                        root_dir = lspconfig.util.root_pattern("*.yaml", "*.yml"),
-                        settings = {
-                            cfn_lint = {
-                                enabled = true,
-                                --[[
-                                   [ linting = {
-                                   [     -- Add specific linting configurations if needed
-                                   [ }
-                                   ]]
-                            }
-                        },
-                    },
-                }
-            end
-
-            lspconfig.cfn_lint.setup {}
         end,
     },
+
+    --[[
+       [ {
+       [     "pmizio/typescript-tools.nvim",
+       [     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+       [     opts = {},
+       [ },
+       ]]
 
     { "Bilal2453/luvit-meta",                     lazy = true },
     {
@@ -197,6 +194,7 @@ return {
             local ls = require("luasnip")
             vim.keymap.set({ "i", "s" }, "<C-S>", function() ls.jump(1) end, { silent = true })
             vim.keymap.set({ "i", "s" }, "<C-A>", function() ls.jump(-1) end, { silent = true })
+            require("luasnip.loaders.from_snipmate").lazy_load({})
         end
     },
 
@@ -352,22 +350,10 @@ return {
         end,
     },
 
-    { 'isobit/vim-caddyfile' },
-    {
-        "iamcco/markdown-preview.nvim",
-        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        build = "cd app && npm install",
-        init = function()
-            vim.g.mkdp_filetypes = { "markdown" }
-        end,
-        ft = { "markdown" },
-    },
-
     {
         "brenoprata10/nvim-highlight-colors",
         config = function()
             require("nvim-highlight-colors").setup({})
         end
     },
-
 }
