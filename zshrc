@@ -1,10 +1,12 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/go/bin:$HOME/.local/bin:$PATH
+export PATH=$HOME/.config/emacs/bin:$HOME/go/bin:$HOME/.local/bin:/opt/zig_nightly/zig_0_12_0:$HOME/.local/share/nvim/mason/bin/:$PATH
 
 zstyle ':omz:update' mode disabled
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+
+export EDITOR="/usr/bin/nvim"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -151,3 +153,15 @@ bindkey -s '^v' 'nvim $(fzf)\n'
 bindkey -s '^o' '~/.tmux-sessionizer\n'
 
 source ~/.zshenv
+
+source ~/.completions/.tern_completion
+source ~/.completions/.sqlc_completion
+source ~/.completions/.pulumi_completion
+source ~/.completions/.deno_completion
+source ~/.completions/.step_completion
+source ~/.completions/.kubectl_completion
+source ~/.completions/.minikube_completion
+source ~/.completions/.pnpm_completion
+
+# add Pulumi to the PATH
+export PATH=$PATH:/home/artty/.pulumi/bin
