@@ -1,5 +1,5 @@
 [font]
-size = 10
+size = 15
 
 [font.bold]
 family = "SourceCodePro"
@@ -11,8 +11,8 @@ style = "SemiboldIt"
 
 [font.italic]
 family = "SourceCodePro"
-style = "Italic"
+style = "MediumIt"
 
 [font.normal]
 family = "SourceCodePro"
-style = "Semibold"
+style = "Medium"
