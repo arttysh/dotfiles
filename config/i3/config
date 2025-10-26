@@ -147,30 +147,6 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-#
-# start: assign workspace to monitor
-# set $monitor_left "DP-0"
-set $monitor_left "HDMI-0"
-# set $monitor_right "HDMI-0"
-set $monitor_right "DP-0"
-
-# browser primary
-workspace $ws1 output $monitor_left
-# browser secondary
-workspace $ws3 output $monitor_left
-
-# dev primary
-workspace $ws2 output $monitor_right
-# dev secondary
-workspace $ws4 output $monitor_right
-
-# communication
-workspace $ws5 output $monitor_right
-
-# entertainment
-workspace $ws6 output $monitor_right
-#
-# end: assign workspace to monitor
 
 
 # switch to workspace
