@@ -4,35 +4,36 @@ return {
         dependencies = "rktjmp/lush.nvim",
         lazy = false,
         priority = 1000,
-        config = function()
-        end
     },
 
     {
         "rose-pine/neovim",
         name = "rose-pine",
-        config = function()
-        end
     },
     {
         'projekt0n/github-nvim-theme',
         name = 'github-theme',
         lazy = false,    -- make sure we load this during startup if it is your main colorscheme
         priority = 1000, -- make sure to load this before all the other start plugins
-        config = function()
-            require('github-theme').setup({
-                -- ...
-            })
-        end,
     },
 
     {
         "catppuccin/nvim",
         name = "catppuccin",
         priority = 1000,
-        config = function()
-        end
     },
+
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        build = "cd app && npm install",
+        init = function()
+            vim.g.mkdp_filetypes = { "markdown" }
+        end,
+        ft = { "markdown" },
+    },
+
+
 
     {
         "mbbill/undotree",
@@ -120,7 +121,10 @@ return {
 
             lspconfig.emmet_language_server.setup {
                 settings = {
-                    filetypes = { "js", "css", "eruby", "html", "htmldjango", "javascriptreact", "less", "pug", "sass", "scss", "typescriptreact", "htmlangular" }
+                    filetypes = {
+                        "js", "css", "eruby", "html", "htmldjango", "javascriptreact",
+                        "less", "pug", "sass", "scss", "typescriptreact", "htmlangular",
+                    }
                 }
             }
 
@@ -137,7 +141,8 @@ return {
             }
 
             local servers = {
-                'sqls', 'pyright', 'tailwindcss', 'clangd', 'bashls',
+                'sqls', 'pyright', 'tailwindcss', 'clangd', 'bashls', 'cssls',
+                "terraformls",
             }
             for _, lsp in ipairs(servers) do
                 lspconfig[lsp].setup {
@@ -297,8 +302,13 @@ return {
             )
             t.load_extension('fzf')
 
+            local _defaults = require('telescope.themes').get_ivy()
+            _defaults['file_ignore_patterns'] = {
+                'node_modules/',
+            }
+
             t.setup {
-                defaults = require('telescope.themes').get_ivy(),
+                defaults = _defaults,
                 pickers = {
                     diagnostics = {
                         theme         = "dropdown",
