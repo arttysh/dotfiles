@@ -60,7 +60,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 
 -- auto format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = { "*.tf", "*.go", "*.lua", "*.js", "*.ts", "*.yaml", "*.json" },
+    pattern = { "*.tf", "*.go", "*.lua", "*.js*", "*.ts*", "*.yaml", "*.json" },
     callback = function()
         vim.lsp.buf.format()
     end
