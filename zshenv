@@ -2,8 +2,6 @@ alias zsrc="source ~/.zshrc"
 alias zedit="nvim ~/.zshrc"
 alias zenv="nvim ~/.zshenv"
 
-alias vi="nvim"
-
 alias s="source env/bin/activate"
 alias sb="source ../env/bin/activate"
 
@@ -19,7 +17,6 @@ alias tms="~/.tmux-sessionizer"
 alias archwiki='firefox-developer-edition /usr/share/doc/arch-wiki/html/en/$(ls /usr/share/doc/arch-wiki/html/en/|fzf)'
 
 alias t="tree -I env/ -I node_modules/"
-. "$HOME/.cargo/env"
 
 # find process name from pid
 alias psfind="ps -o comm= -p"
@@ -35,11 +32,4 @@ alias cat="bat"
 
 gdoc() {
     go doc -src -all $1 | less
-}
-
-nvuvm_reset() {
-    sudo systemctl stop ollama.service
-    sudo modprobe -r nvidia_uvm
-    sudo modprobe nvidia_uvm
-    sudo systemctl start ollama.service
 }
