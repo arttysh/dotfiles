@@ -58,7 +58,6 @@ return {
         },
 
         config = function()
-            local lspconfig = require("lspconfig")
             local mason = require("mason")
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -72,7 +71,7 @@ return {
 
 
             -- lua_ls begin
-            lspconfig.lua_ls.setup {
+            vim.lsp.config('lua_ls', {
                 on_init = function(client)
                     local path = client.workspace_folders[1].name
                     if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
@@ -91,10 +90,11 @@ return {
                 settings = {
                     Lua = {}
                 }
-            }
+            })
+            vim.lsp.enable('lua_ls')
             -- lua_ls end
 
-            lspconfig.gopls.setup {
+            vim.lsp.config('gopls', {
                 capabilities = capabilities,
                 settings = {
                     gopls = {
@@ -110,25 +110,27 @@ return {
                     usePlaceholders = true,
                 }
 
-            }
+            })
+            vim.lsp.enable('gopls')
 
             local json_capabilities = vim.lsp.protocol.make_client_capabilities()
             json_capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-            require 'lspconfig'.jsonls.setup {
+            vim.lsp.config('jsonls', {
                 capabilities = json_capabilities,
-            }
+            })
+            vim.lsp.enable('jsonls')
 
-            lspconfig.emmet_language_server.setup {
+            vim.lsp.config('emmet_language_server', {
                 settings = {
                     filetypes = {
                         "js", "css", "eruby", "html", "htmldjango", "javascriptreact",
                         "less", "pug", "sass", "scss", "typescriptreact", "htmlangular",
                     }
                 }
-            }
+            })
+            vim.lsp.enable('emmet_language_server')
 
-            lspconfig.ts_ls.setup {
+            vim.lsp.config('ts_ls', {
                 capabilities = capabilities,
                 settings = {
                     ts_ls = {
@@ -138,19 +140,20 @@ return {
                 init_options = {
                     usePlaceholders = true,
                 }
-            }
+            })
 
             local servers = {
                 'sqls', 'pyright', 'tailwindcss', 'clangd', 'bashls', 'cssls',
                 "terraformls",
             }
             for _, lsp in ipairs(servers) do
-                lspconfig[lsp].setup {
+                vim.lsp.config(lsp, {
                     capabilities = capabilities,
                     init_options = {
                         usePlaceholders = true,
                     }
-                }
+                })
+                vim.lsp.enable(lsp)
             end
         end,
     },
