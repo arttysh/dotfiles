@@ -85,9 +85,9 @@ plugins=(
     zsh-autosuggestions
     python
     docker-compose
-    zig-shell-completions
-    kubectl
-    kubeadm
+    # zig-shell-completions
+    # kubectl
+    # kubeadm
     systemd
 )
 
@@ -154,14 +154,11 @@ bindkey -s '^o' '~/.tmux-sessionizer\n'
 
 source ~/.zshenv
 
-source ~/.completions/.tern_completion
-source ~/.completions/.sqlc_completion
-source ~/.completions/.pulumi_completion
-source ~/.completions/.deno_completion
-source ~/.completions/.step_completion
-source ~/.completions/.kubectl_completion
-source ~/.completions/.minikube_completion
-source ~/.completions/.pnpm_completion
-
-# add Pulumi to the PATH
-export PATH=$PATH:/home/artty/.pulumi/bin
+# source ~/.completions/.tern_completion
+# source ~/.completions/.sqlc_completion
+# source ~/.completions/.pulumi_completion
+# source ~/.completions/.deno_completion
+# source ~/.completions/.step_completion
+# source ~/.completions/.kubectl_completion
+# source ~/.completions/.minikube_completion
+# source ~/.completions/.pnpm_completion
