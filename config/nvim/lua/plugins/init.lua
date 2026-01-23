@@ -141,10 +141,21 @@ return {
                     usePlaceholders = true,
                 }
             })
+            vim.lsp.enable('ts_ls')
+
+            -- tofu-ls lsp setup
+            vim.lsp.config['tofu_ls'] = {
+                cmd = { 'tofu-ls', 'serve' },
+                -- Base filetypes
+                filetypes = { 'terraform', 'terraform-vars' },
+                root_markers = { '.terraform', '.git' },
+            }
+
+            vim.lsp.enable('tofu_ls')
 
             local servers = {
                 'sqls', 'pyright', 'tailwindcss', 'clangd', 'bashls', 'cssls',
-                "terraformls",
+                -- "terraformls",
             }
             for _, lsp in ipairs(servers) do
                 vim.lsp.config(lsp, {
@@ -178,21 +189,9 @@ return {
         },
     },
     {
-        "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-        config = function()
-            local configs = require("nvim-treesitter.configs")
-
-            configs.setup({
-                ensure_installed = { "go" },
-                sync_install = false,
-                highlight = { enable = true },
-                indent = { enable = true },
-                ignore_install = {},
-                auto_install = true,
-                modules = {},
-            })
-        end
+        'nvim-treesitter/nvim-treesitter',
+        lazy = false,
+        build = ':TSUpdate'
     },
 
     {
@@ -369,4 +368,5 @@ return {
             require("nvim-highlight-colors").setup({})
         end
     },
+
 }
