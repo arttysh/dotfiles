@@ -309,6 +309,12 @@ return {
                 'node_modules/',
             }
 
+            _defaults['preview'] = {
+                treesitter = {
+                    enable = false
+                }
+            }
+
             t.setup {
                 defaults = _defaults,
                 pickers = {
