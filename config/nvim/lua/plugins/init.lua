@@ -94,6 +94,29 @@ return {
             vim.lsp.enable('lua_ls')
             -- lua_ls end
 
+            local jdtls_dir = '/home/artty/.jdtls'
+            local jdtls_workspace = '/home/artty/.jdtls-workspace' .. vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+            vim.lsp.config('jdtls', {
+                cmd = {
+                    -- '/usr/bin/java',
+                    -- '/usr/lib/jvm/java-25-openjdk/bin/java',
+                    '/usr/lib/jvm/java-latest-openjdk/bin/java',
+                    '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+                    '-Dosgi.bundles.defaultStartLevel=4',
+                    '-Declipse.product=org.eclipse.jdt.ls.core.product',
+                    '-Dlog.level=ALL',
+                    '-Xmx1G',
+                    '--add-modules=ALL-SYSTEM',
+                    '--add-opens', 'java.base/java.util=ALL-UNNAMED',
+                    '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+                    '-jar', jdtls_dir .. '/plugins/org.eclipse.equinox.launcher_1.7.100.v20251111-0406.jar',
+                    '-configuration', jdtls_dir .. '/config_linux',
+                    '-data', jdtls_workspace,
+
+                }
+            })
+            vim.lsp.enable('jdtls')
+
             vim.lsp.config('gopls', {
                 capabilities = capabilities,
                 settings = {
@@ -153,8 +176,21 @@ return {
 
             vim.lsp.enable('tofu_ls')
 
+
+            vim.lsp.config('rust_analyzer', {
+                settings = {
+                    ['rust-analyzer'] = {
+                        diagnostics = {
+                            enable = false,
+                        }
+                    }
+                }
+            })
+            vim.lsp.enable('rust_analyzer')
+
             local servers = {
                 'sqls', 'pyright', 'tailwindcss', 'clangd', 'bashls', 'cssls',
+                'docker_compose_language_service', 'docker_language_server', 'dockerls',
                 -- "terraformls",
             }
             for _, lsp in ipairs(servers) do
@@ -276,6 +312,7 @@ return {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.8',
         dependencies = { 'nvim-lua/plenary.nvim' },
+
         config = function()
             local t = require("telescope")
             local builtin = require("telescope.builtin")
@@ -374,5 +411,18 @@ return {
             require("nvim-highlight-colors").setup({})
         end
     },
+
+    { 'mfussenegger/nvim-jdtls' },
+
+    {
+        "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        config = function()
+            local lsp_lines = require("lsp_lines")
+            lsp_lines.setup()
+            vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
+            vim.keymap.set("n", "<leader>l", lsp_lines.toggle, { desc = "Toggle lsp_lines" })
+        end,
+    },
+
 
 }
